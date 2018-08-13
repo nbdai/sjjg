@@ -217,6 +217,7 @@ public class BST<E extends Comparable<E>> {
         if(node == null)
             return null;
        if(e.compareTo(node.e)==0){
+           //值相等就删除。
            if(node.left==null){
                Node temp = node.right;
                node.right = null;
