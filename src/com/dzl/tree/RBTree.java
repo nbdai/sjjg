@@ -98,16 +98,21 @@ public class RBTree<T extends  Comparable<T>, V>{
 
     private Node add(Node node,T t,V v) {
         //为空说明找到结尾了，直接添加节点即可。
+
         if (node == null) {
             node = new Node(t,v);
             size++;
-            return node;
+            return  node;
         }
         //负责和当前节点的值比较。如果比其小说明应该插入左子树。
         else if (t.compareTo(node.key) < 0) {
             node.left = add(node.left,t,v);
+
         } else if (t.compareTo(node.key) > 0) {
             node.right = add(node.right,t,v);
+
+        }else {
+            return node;
         }
         //维护黑平衡，即二三树的性质   三节点左边设为红，右边设为黑。   二节点为黑色的。因为23树增加节点永远不能再空的上面增加
         //只能融合当前节点，所以新增的节点我们设为红色。（若为黑还破坏了黑平衡。）

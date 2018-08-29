@@ -136,6 +136,8 @@ public class AvlTree<E extends Comparable<E>>{
          Node z = x.right;
          x.right = y;
          y.left = z;
+         x.height = Math.max(getHeight(x.left),getHeight(x.right))+1;
+         y.height = Math.max(getHeight(y.left),getHeight(y.right))+1;
          return x;
     }
     private Node leftRolate(Node y){
@@ -149,6 +151,8 @@ public class AvlTree<E extends Comparable<E>>{
         Node z = x.left;
         x.left = y;
         y.right = z;
+        x.height = Math.max(getHeight(x.left),getHeight(x.right))+1;
+        y.height = Math.max(getHeight(y.left),getHeight(y.right))+1;
         return x;
     }
     public boolean contains(E e) {
